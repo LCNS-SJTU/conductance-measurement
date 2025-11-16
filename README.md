@@ -3,7 +3,7 @@
 paper name: overcoming the space clamp effect: Reliable recovery of local and effective synaptic conductances of neurons.
 
 
-我们在四种不同类型的带复杂树突结构和离子通道的神经元模型上说明空间钳效应，并比较了我们的方法和传统方法在恢复局部和等效突触电导的效果。包括L5PC， FS， hippocampus PC和purkinje神经元。其中正文的结果主要是L5PC的结果。由于程序类似，我主要就L5PC的代码为例进行说明：
+我们在四种不同类型的带复杂树突结构和离子通道的神经元模型上比较了我们的方法和传统方法在恢复局部和等效突触电导的效果。包括L5PC， FS， hippocampus PC和purkinje神经元。其中正文的结果主要是L5PC的结果。由于程序类似，我主要就L5PC的代码为例进行说明：
 
 space clamp effect 说明： space_clamp_error.ipynb (Fig 1A);
 
