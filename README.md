@@ -19,4 +19,4 @@ Interaction between the injected current and synaptic current: interaction_betwe
 
 effective conductances estimation:  eff_cond_est.ipynb for a pair of EI inputs (Fig 4C);
                                        
-                                                         multiple_efff_con.ipynb for multiple E and I inputs (Fig 4D);
+                                   multiple_efff_con.ipynb for multiple E and I inputs (Fig 4D);
