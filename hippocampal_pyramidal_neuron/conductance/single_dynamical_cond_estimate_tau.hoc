@@ -1,0 +1,117 @@
+                      /* use voltage clamp to measure the local E and I conductance transients
+
+/*apical trunk list: 0(41.50)-2(94.47)-14(122.82)-28(151.46)-30(179.70)-32(195.53)-40(201.79)-
+	-44(227.96)-52(254.45)-60(262.17)-66(268.27)-72(283.71)-74(311.14)-78(343.59)*/
+
+load_file("preload_files.hoc")
+
+cvode.active(0)
+dt=0.1
+
+tstop=200      //simulation end time
+
+Loc=74        //an individual input location on the dendritic trunk
+
+//====================declare and initialize variables==========================
+
+objectvar Stim
+
+objref vol
+strdef target_path
+
+vol= new Vector()
+
+
+objref savdata, recv
+recv=new Vector()
+recv.record(&soma.v(0))
+
+v_clamp=-70
+
+//=================================functions====================================
+access soma
+distance()
+
+proc step() {	local i
+	fadvance()
+		if(ngraph!=0) {
+			for i=0, ngraph-1{
+				g[i].plot(t)
+				g[i].flush()
+				doNotify()
+			}
+		}
+}
+
+proc run() { local j
+	init()
+	if(ngraph!=0) {
+		for j=0, ngraph-1{
+				g[j].begin()
+		}
+	}
+	while(t<tstop) {
+	step()}
+}
+
+//======================initialize voltage clamp================================
+
+objref clampobj
+soma{
+  clampobj = new SEClamp(.5)
+  clampobj.dur1=100
+  clampobj.amp1=v_clamp
+  clampobj.dur2=tstop
+  clampobj.amp2=v_clamp-20
+  clampobj.rs=1e-2
+}
+
+objref irec
+irec =new Vector()
+irec.record(&clampobj.i)
+
+//===================define main function=======================================
+
+proc main() {
+
+sprint(target_path, "%s", "single_dynamical_cond_estimate_tau.dat")  //define the output file name
+
+savdata = new File()
+savdata.wopen(target_path)
+
+
+//========================set synaptic inputs===================================
+dend[Loc] Stim = new ExpSynn(0.4)
+Stim.onset = 100    //(ms)
+Stim.tau1 = 0.5     //(ms)
+Stim.tau2 = 5       //(ms)
+Stim.e = 0          //(mV)  0 for excitation, -80 for inhibition
+
+//=========E input is given, and voltage clamp is used================
+
+for i =1,20 {
+  clampobj.dur1=100+i
+
+  Stim.gmax = 0e-2
+  run()
+  vol = recv.c.sub(0)
+  vol.printf(savdata,"%g \t")
+  irec.printf(savdata,"%g \t")
+
+  Stim.gmax = 1e-3
+  run()
+  vol = recv.c.sub(0)
+  vol.printf(savdata,"%g \t")
+  irec.printf(savdata,"%g \t")
+
+  }
+
+	savdata.close()
+	print "Done!\n"
+
+}
+
+//====================execute the main function=================================
+
+
+main()

@@ -1,0 +1,160 @@
+/* use voltage clamp to measure the local E and I conductance transients
+
+/*apical trunk list: 0(41.50)-2(94.47)-14(122.82)-28(151.46)-30(179.70)-32(195.53)-40(201.79)-
+	-44(227.96)-52(254.45)-60(262.17)-66(268.27)-72(283.71)-74(311.14)-78(343.59)*/
+  
+load_file("preload_files.hoc")
+
+cvode.active(0)
+dt=0.1
+
+tstop=300      //simulation end time
+
+//====================declare and initialize variables==========================
+
+objectvar Stim
+
+objref vol     
+strdef target_path
+
+vol= new Vector()
+
+objref savdata, recv1, recv2, recv3, recv4, recv5, recv6, recv7, recv8, recv9, recv10, recv11, recv12, recv13, recv14, recv15, recv16, recv17, recv18
+recv1=new Vector()
+recv1.record(&soma.v(0))
+recv2=new Vector()
+recv2.record(&dend[2].v(0))
+recv3=new Vector()
+recv3.record(&dend[14].v(0))
+recv4=new Vector()
+recv4.record(&dend[28].v(0))
+recv5=new Vector()
+recv5.record(&dend[30].v(0))
+recv6=new Vector()
+recv6.record(&dend[32].v(0))
+recv7=new Vector()
+recv7.record(&dend[40].v(0))
+recv8=new Vector()
+recv8.record(&dend[44].v(0))
+recv9=new Vector()
+recv9.record(&dend[52].v(0))
+recv10=new Vector()
+recv10.record(&dend[60].v(0))
+recv11=new Vector()
+recv11.record(&dend[66].v(0))
+recv12=new Vector()
+recv12.record(&dend[72].v(0))
+recv13=new Vector()
+recv13.record(&dend[74].v(0))
+recv14=new Vector()
+recv14.record(&dend[78].v(0))
+recv15=new Vector()
+recv15.record(&dend[84].v(0))
+recv16=new Vector()
+recv16.record(&dend[90].v(0))
+recv17=new Vector()
+recv17.record(&dend[92].v(0))
+recv18=new Vector()
+recv18.record(&dend[98].v(0))
+//=================================functions====================================
+access soma
+distance()
+
+proc step() {	local i
+	fadvance()
+		if(ngraph!=0) {
+			for i=0, ngraph-1{
+				g[i].plot(t)
+				g[i].flush()
+				doNotify()
+			}
+		}
+}
+
+proc run() { local j
+	init()
+	if(ngraph!=0) {
+		for j=0, ngraph-1{
+				g[j].begin()
+		}
+	}
+	while(t<tstop) {
+	step()}
+}
+
+//======================initialize voltage clamp================================
+
+objref clampobj
+soma{
+  clampobj = new SEClamp(.5)
+  clampobj.dur1=tstop
+  clampobj.amp1=-70
+  clampobj.rs=1e-2
+}
+
+objref irec
+irec =new Vector()
+irec.record(&clampobj.i)
+
+//===================define main function=======================================
+
+proc main() { 
+
+sprint(target_path, "%s", "volt_spatial_distribution_vclamp.dat")  //define the output file name
+   
+savdata = new File()
+savdata.wopen(target_path)
+            
+clampobj.dur1=tstop
+
+for k = 1,10{
+    clampobj.amp1=-110+k*10
+
+    run()
+    vol = recv1.c.sub(0)
+    vol.printf(savdata,"%g \t")
+    vol = recv2.c.sub(0)
+    vol.printf(savdata,"%g \t")
+    vol = recv3.c.sub(0)
+    vol.printf(savdata,"%g \t")
+    vol = recv4.c.sub(0)
+    vol.printf(savdata,"%g \t")
+    vol = recv5.c.sub(0)
+    vol.printf(savdata,"%g \t")
+    vol = recv6.c.sub(0)
+    vol.printf(savdata,"%g \t")
+    vol = recv7.c.sub(0)
+    vol.printf(savdata,"%g \t")
+    vol = recv8.c.sub(0)
+    vol.printf(savdata,"%g \t")
+    vol = recv9.c.sub(0)
+    vol.printf(savdata,"%g \t")
+    vol = recv10.c.sub(0)
+    vol.printf(savdata,"%g \t")
+    vol = recv11.c.sub(0)
+    vol.printf(savdata,"%g \t")
+    vol = recv12.c.sub(0)
+    vol.printf(savdata,"%g \t")
+    vol = recv13.c.sub(0)
+    vol.printf(savdata,"%g \t")
+    vol = recv14.c.sub(0)
+    vol.printf(savdata,"%g \t")
+    vol = recv15.c.sub(0)
+    vol.printf(savdata,"%g \t")
+    vol = recv16.c.sub(0)
+    vol.printf(savdata,"%g \t")
+    vol = recv17.c.sub(0)
+    vol.printf(savdata,"%g \t")
+    vol = recv18.c.sub(0)
+    vol.printf(savdata,"%g \t")
+	}
+
+	savdata.close()
+	print "Done!\n"
+
+}
+
+//====================execute the main function=================================
+
+
+main()

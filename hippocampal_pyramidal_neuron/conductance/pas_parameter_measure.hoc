@@ -1,0 +1,85 @@
+/* We consider the neuron as an idealized point, and estimate the effective surface and 
+leak conductance here together with the matlab code pas_parameter_measure.m*/
+
+load_file("preload_files.hoc")
+
+cvode.active(0)
+secondorder=2
+dt=0.1
+
+tstop=1000
+
+access soma
+	distance()
+	
+//=========================define functions====================================
+proc step() {	local i
+	fadvance()
+		if(ngraph!=0) {
+			for i=0, ngraph-1{
+				g[i].plot(t)
+				g[i].flush()
+				doNotify()
+			}
+		}
+}
+
+proc run() { local j
+	init()
+	if(ngraph!=0) {
+		for j=0, ngraph-1{
+				g[j].begin()
+		}
+	}	
+	while(t<tstop) {		
+	step()}	
+}
+//=======================declare variables======================================
+
+strdef target_path 
+objref savdata, recv 
+recv=new Vector()
+recv.record(&soma.v(0))
+objref Vol
+Vol= new Vector()
+
+//========current clamp is used at soma for the first 500ms=====================
+objref clampobj
+soma{
+  clampobj = new IClamp(.5)
+  clampobj.dur=tstop/2
+  clampobj.amp=0
+  clampobj.del=0
+}
+
+objref irec
+irec =new Vector()
+irec.record(&clampobj.i)
+//=====================define main function=====================================
+
+proc main() { local i, j
+    sprint(target_path, "%s", "pas_parameter_neuron.dat")
+
+    savdata = new File()
+    savdata.wopen(target_path)
+
+ for j =1,5{
+    clampobj.amp=j*0.01  //five amplitudes of current clamps
+    run()   
+    Vol = recv.c.sub(0) 
+    Vol.printf(savdata,"%g \t")
+}
+                                                   
+    savdata.close()                                             
+    print "Done!\n"                     
+
+}
+   
+//=====================execute main function====================================
+    
+main()
+        
+
+
+	
+

@@ -1,0 +1,72 @@
+h.cpp: /home/wzl/LFPy/project/conductance_measurement/realistic_neuron/hippocampal_pyramidal_neuron/mod/h.mod $(NOCMODL)
+	@printf " -> $(C_GREEN)NMODL$(C_RESET) $<\\n"
+	(cd "/home/wzl/LFPy/project/conductance_measurement/realistic_neuron/hippocampal_pyramidal_neuron/mod";  MODLUNIT=$(NRNUNITS) $(NOCMODL) "h.mod" -o "/home/wzl/LFPy/project/conductance_measurement/realistic_neuron/hippocampal_pyramidal_neuron/conductance/local_mean_cond/x86_64" )
+
+./h.o: h.cpp
+	@printf " -> $(C_GREEN)Compiling$(C_RESET) /home/wzl/LFPy/project/conductance_measurement/realistic_neuron/hippocampal_pyramidal_neuron/conductance/local_mean_cond/x86_64/$<\\n"
+	$(CXXCOMPILE) -I"/home/wzl/LFPy/project/conductance_measurement/realistic_neuron/hippocampal_pyramidal_neuron/mod" $(INCLUDES) -fPIC -c "/home/wzl/LFPy/project/conductance_measurement/realistic_neuron/hippocampal_pyramidal_neuron/conductance/local_mean_cond/x86_64/$<" -o $@
+
+ICaL.cpp: /home/wzl/LFPy/project/conductance_measurement/realistic_neuron/hippocampal_pyramidal_neuron/mod/ICaL.mod $(NOCMODL)
+	@printf " -> $(C_GREEN)NMODL$(C_RESET) $<\\n"
+	(cd "/home/wzl/LFPy/project/conductance_measurement/realistic_neuron/hippocampal_pyramidal_neuron/mod";  MODLUNIT=$(NRNUNITS) $(NOCMODL) "ICaL.mod" -o "/home/wzl/LFPy/project/conductance_measurement/realistic_neuron/hippocampal_pyramidal_neuron/conductance/local_mean_cond/x86_64" )
+
+./ICaL.o: ICaL.cpp
+	@printf " -> $(C_GREEN)Compiling$(C_RESET) /home/wzl/LFPy/project/conductance_measurement/realistic_neuron/hippocampal_pyramidal_neuron/conductance/local_mean_cond/x86_64/$<\\n"
+	$(CXXCOMPILE) -I"/home/wzl/LFPy/project/conductance_measurement/realistic_neuron/hippocampal_pyramidal_neuron/mod" $(INCLUDES) -fPIC -c "/home/wzl/LFPy/project/conductance_measurement/realistic_neuron/hippocampal_pyramidal_neuron/conductance/local_mean_cond/x86_64/$<" -o $@
+
+ICaT.cpp: /home/wzl/LFPy/project/conductance_measurement/realistic_neuron/hippocampal_pyramidal_neuron/mod/ICaT.mod $(NOCMODL)
+	@printf " -> $(C_GREEN)NMODL$(C_RESET) $<\\n"
+	(cd "/home/wzl/LFPy/project/conductance_measurement/realistic_neuron/hippocampal_pyramidal_neuron/mod";  MODLUNIT=$(NRNUNITS) $(NOCMODL) "ICaT.mod" -o "/home/wzl/LFPy/project/conductance_measurement/realistic_neuron/hippocampal_pyramidal_neuron/conductance/local_mean_cond/x86_64" )
+
+./ICaT.o: ICaT.cpp
+	@printf " -> $(C_GREEN)Compiling$(C_RESET) /home/wzl/LFPy/project/conductance_measurement/realistic_neuron/hippocampal_pyramidal_neuron/conductance/local_mean_cond/x86_64/$<\\n"
+	$(CXXCOMPILE) -I"/home/wzl/LFPy/project/conductance_measurement/realistic_neuron/hippocampal_pyramidal_neuron/mod" $(INCLUDES) -fPIC -c "/home/wzl/LFPy/project/conductance_measurement/realistic_neuron/hippocampal_pyramidal_neuron/conductance/local_mean_cond/x86_64/$<" -o $@
+
+kadist.cpp: /home/wzl/LFPy/project/conductance_measurement/realistic_neuron/hippocampal_pyramidal_neuron/mod/kadist.mod $(NOCMODL)
+	@printf " -> $(C_GREEN)NMODL$(C_RESET) $<\\n"
+	(cd "/home/wzl/LFPy/project/conductance_measurement/realistic_neuron/hippocampal_pyramidal_neuron/mod";  MODLUNIT=$(NRNUNITS) $(NOCMODL) "kadist.mod" -o "/home/wzl/LFPy/project/conductance_measurement/realistic_neuron/hippocampal_pyramidal_neuron/conductance/local_mean_cond/x86_64" )
+
+./kadist.o: kadist.cpp
+	@printf " -> $(C_GREEN)Compiling$(C_RESET) /home/wzl/LFPy/project/conductance_measurement/realistic_neuron/hippocampal_pyramidal_neuron/conductance/local_mean_cond/x86_64/$<\\n"
+	$(CXXCOMPILE) -I"/home/wzl/LFPy/project/conductance_measurement/realistic_neuron/hippocampal_pyramidal_neuron/mod" $(INCLUDES) -fPIC -c "/home/wzl/LFPy/project/conductance_measurement/realistic_neuron/hippocampal_pyramidal_neuron/conductance/local_mean_cond/x86_64/$<" -o $@
+
+kaprox.cpp: /home/wzl/LFPy/project/conductance_measurement/realistic_neuron/hippocampal_pyramidal_neuron/mod/kaprox.mod $(NOCMODL)
+	@printf " -> $(C_GREEN)NMODL$(C_RESET) $<\\n"
+	(cd "/home/wzl/LFPy/project/conductance_measurement/realistic_neuron/hippocampal_pyramidal_neuron/mod";  MODLUNIT=$(NRNUNITS) $(NOCMODL) "kaprox.mod" -o "/home/wzl/LFPy/project/conductance_measurement/realistic_neuron/hippocampal_pyramidal_neuron/conductance/local_mean_cond/x86_64" )
+
+./kaprox.o: kaprox.cpp
+	@printf " -> $(C_GREEN)Compiling$(C_RESET) /home/wzl/LFPy/project/conductance_measurement/realistic_neuron/hippocampal_pyramidal_neuron/conductance/local_mean_cond/x86_64/$<\\n"
+	$(CXXCOMPILE) -I"/home/wzl/LFPy/project/conductance_measurement/realistic_neuron/hippocampal_pyramidal_neuron/mod" $(INCLUDES) -fPIC -c "/home/wzl/LFPy/project/conductance_measurement/realistic_neuron/hippocampal_pyramidal_neuron/conductance/local_mean_cond/x86_64/$<" -o $@
+
+kdrca1.cpp: /home/wzl/LFPy/project/conductance_measurement/realistic_neuron/hippocampal_pyramidal_neuron/mod/kdrca1.mod $(NOCMODL)
+	@printf " -> $(C_GREEN)NMODL$(C_RESET) $<\\n"
+	(cd "/home/wzl/LFPy/project/conductance_measurement/realistic_neuron/hippocampal_pyramidal_neuron/mod";  MODLUNIT=$(NRNUNITS) $(NOCMODL) "kdrca1.mod" -o "/home/wzl/LFPy/project/conductance_measurement/realistic_neuron/hippocampal_pyramidal_neuron/conductance/local_mean_cond/x86_64" )
+
+./kdrca1.o: kdrca1.cpp
+	@printf " -> $(C_GREEN)Compiling$(C_RESET) /home/wzl/LFPy/project/conductance_measurement/realistic_neuron/hippocampal_pyramidal_neuron/conductance/local_mean_cond/x86_64/$<\\n"
+	$(CXXCOMPILE) -I"/home/wzl/LFPy/project/conductance_measurement/realistic_neuron/hippocampal_pyramidal_neuron/mod" $(INCLUDES) -fPIC -c "/home/wzl/LFPy/project/conductance_measurement/realistic_neuron/hippocampal_pyramidal_neuron/conductance/local_mean_cond/x86_64/$<" -o $@
+
+na3.cpp: /home/wzl/LFPy/project/conductance_measurement/realistic_neuron/hippocampal_pyramidal_neuron/mod/na3.mod $(NOCMODL)
+	@printf " -> $(C_GREEN)NMODL$(C_RESET) $<\\n"
+	(cd "/home/wzl/LFPy/project/conductance_measurement/realistic_neuron/hippocampal_pyramidal_neuron/mod";  MODLUNIT=$(NRNUNITS) $(NOCMODL) "na3.mod" -o "/home/wzl/LFPy/project/conductance_measurement/realistic_neuron/hippocampal_pyramidal_neuron/conductance/local_mean_cond/x86_64" )
+
+./na3.o: na3.cpp
+	@printf " -> $(C_GREEN)Compiling$(C_RESET) /home/wzl/LFPy/project/conductance_measurement/realistic_neuron/hippocampal_pyramidal_neuron/conductance/local_mean_cond/x86_64/$<\\n"
+	$(CXXCOMPILE) -I"/home/wzl/LFPy/project/conductance_measurement/realistic_neuron/hippocampal_pyramidal_neuron/mod" $(INCLUDES) -fPIC -c "/home/wzl/LFPy/project/conductance_measurement/realistic_neuron/hippocampal_pyramidal_neuron/conductance/local_mean_cond/x86_64/$<" -o $@
+
+nax.cpp: /home/wzl/LFPy/project/conductance_measurement/realistic_neuron/hippocampal_pyramidal_neuron/mod/nax.mod $(NOCMODL)
+	@printf " -> $(C_GREEN)NMODL$(C_RESET) $<\\n"
+	(cd "/home/wzl/LFPy/project/conductance_measurement/realistic_neuron/hippocampal_pyramidal_neuron/mod";  MODLUNIT=$(NRNUNITS) $(NOCMODL) "nax.mod" -o "/home/wzl/LFPy/project/conductance_measurement/realistic_neuron/hippocampal_pyramidal_neuron/conductance/local_mean_cond/x86_64" )
+
+./nax.o: nax.cpp
+	@printf " -> $(C_GREEN)Compiling$(C_RESET) /home/wzl/LFPy/project/conductance_measurement/realistic_neuron/hippocampal_pyramidal_neuron/conductance/local_mean_cond/x86_64/$<\\n"
+	$(CXXCOMPILE) -I"/home/wzl/LFPy/project/conductance_measurement/realistic_neuron/hippocampal_pyramidal_neuron/mod" $(INCLUDES) -fPIC -c "/home/wzl/LFPy/project/conductance_measurement/realistic_neuron/hippocampal_pyramidal_neuron/conductance/local_mean_cond/x86_64/$<" -o $@
+
+synexp.cpp: /home/wzl/LFPy/project/conductance_measurement/realistic_neuron/hippocampal_pyramidal_neuron/mod/synexp.mod $(NOCMODL)
+	@printf " -> $(C_GREEN)NMODL$(C_RESET) $<\\n"
+	(cd "/home/wzl/LFPy/project/conductance_measurement/realistic_neuron/hippocampal_pyramidal_neuron/mod";  MODLUNIT=$(NRNUNITS) $(NOCMODL) "synexp.mod" -o "/home/wzl/LFPy/project/conductance_measurement/realistic_neuron/hippocampal_pyramidal_neuron/conductance/local_mean_cond/x86_64" )
+
+./synexp.o: synexp.cpp
+	@printf " -> $(C_GREEN)Compiling$(C_RESET) /home/wzl/LFPy/project/conductance_measurement/realistic_neuron/hippocampal_pyramidal_neuron/conductance/local_mean_cond/x86_64/$<\\n"
+	$(CXXCOMPILE) -I"/home/wzl/LFPy/project/conductance_measurement/realistic_neuron/hippocampal_pyramidal_neuron/mod" $(INCLUDES) -fPIC -c "/home/wzl/LFPy/project/conductance_measurement/realistic_neuron/hippocampal_pyramidal_neuron/conductance/local_mean_cond/x86_64/$<" -o $@
+

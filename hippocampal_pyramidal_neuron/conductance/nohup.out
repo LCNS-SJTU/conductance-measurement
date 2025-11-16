@@ -1,0 +1,4 @@
+  File "/home/wzl/LFPy/project/conductance_measurement/realistic_neuron/hippocampal_pyramidal_neuron/conductance/est_eff_cond.py", line 19
+    %matplotlib inline
+    ^
+SyntaxError: invalid syntax

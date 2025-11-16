@@ -1,0 +1,6 @@
+objref whole_dendrites
+whole_dendrites = new SectionList()
+
+for i = 0,198 dend[i]{
+  whole_dendrites.append()
+}
