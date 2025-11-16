@@ -1,0 +1,15 @@
+python: can't open file '/home/wzl/LFPy/project/conductance_measurement/realistic_neuron/L5PC_neuron/parallel_eff.py': [Errno 2] No such file or directory
+  File "/home/wzl/LFPy/project/conductance_measurement/realistic_neuron/L5PC_neuron/parallel_eff.py", line 10
+    %matplotlib inline
+    ^
+SyntaxError: invalid syntax
+Warning: no DISPLAY environment variable.
+--No graphics will be displayed.
+Warning: no DISPLAY environment variable.
+--No graphics will be displayed.
+Warning: no DISPLAY environment variable.
+--No graphics will be displayed.
+Warning: no DISPLAY environment variable.
+--No graphics will be displayed.
+Warning: no DISPLAY environment variable.
+--No graphics will be displayed.
